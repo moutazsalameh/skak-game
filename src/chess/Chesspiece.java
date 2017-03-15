@@ -10,6 +10,7 @@ package chess;
  * @author MouNj
  */
 public class Chesspiece {
+
     private String name;
     private String color;//sort eller hvid
     private int xPosition;
@@ -67,11 +68,10 @@ public class Chesspiece {
         return ("(" + sympol + y + ")");
 
     }
+// Lav en metode possibleMoves(), som returnerer navnene på alle de felter brikken kan rykke til.
 
     public String possibleMoves() {
 
-        return "";
+        return name;
     }
 }
-
-
