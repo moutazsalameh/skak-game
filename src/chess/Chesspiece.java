@@ -24,11 +24,7 @@ public class Chesspiece {
     }
 
     public boolean canMoveTo(int x, int y) {
-        if ((x > 1 && x <= 8) && ((y > 1 && y <= 8)) && ((this.xPosition != x && this.yPosition != y))) {
-            return true;
-
-        }
-        return false;
+        return (x > 1 && x <= 8) && ((y > 1 && y <= 8)) && ((this.xPosition != x && this.yPosition != y));
     }
 
     public String positionToField(int x, int y) {
@@ -36,30 +32,30 @@ public class Chesspiece {
 
         switch (x) {
             case 1:
-                sympol = "A";
+                sympol = "a";
                 break;
             case 2:
-                sympol = "B";
+                sympol = "b";
                 break;
             case 3:
-                sympol = "C";
+                sympol = "c";
                 break;
             case 4:
-                sympol = "D";
+                sympol = "d";
                 break;
 
             case 5:
-                sympol = "E";
+                sympol = "e";
                 break;
 
             case 6:
-                sympol = "G";
+                sympol = "f";
                 break;
             case 7:
-                sympol = "H";
+                sympol = "g";
                 break;
             case 8:
-                sympol = "I";
+                sympol = "h";
                 break;
             default:
                 sympol = "Invalid ";
@@ -71,7 +67,14 @@ public class Chesspiece {
 // Lav en metode possibleMoves(), som returnerer navnene på alle de felter brikken kan rykke til.
 
     public String possibleMoves() {
-
+        
+for (int x=1;x<=8;x++)
+{
+    for(int y=1;y<=8;y++)
+    {
+        
+    }
+}
         return name;
     }
 }
