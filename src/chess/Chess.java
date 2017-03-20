@@ -18,8 +18,9 @@ public class Chess {
         // TODO code application logic here
         Chesspiece sk = new Chesspiece("castel", "white", 1, 1);
 
-        System.out.println("possibleMoves : \n" + sk.possibleMoves());
+//        System.out.println("possibleMoves : \n" + sk.possibleMoves());
 
+     sk.show();
     }
 
 }
