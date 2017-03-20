@@ -5,6 +5,8 @@
  */
 package chess;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author MouNj
@@ -67,14 +69,16 @@ public class Chesspiece {
 // Lav en metode possibleMoves(), som returnerer navnene på alle de felter brikken kan rykke til.
 
     public String possibleMoves() {
-        
-for (int x=1;x<=8;x++)
-{
-    for(int y=1;y<=8;y++)
-    {
-        
-    }
-}
-        return name;
+        ArrayList<String> moves = new ArrayList<>();
+        {
+            for (int y = 1; y <= 8; y++) {
+                for (int x = 1; x <= 8; x++) {
+
+                    moves.add(positionToField(x, y));
+
+                }
+            }
+        }
+        return moves.toString();
     }
 }
