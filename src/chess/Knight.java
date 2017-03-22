@@ -5,6 +5,8 @@
  */
 package chess;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author MouNj
@@ -17,11 +19,32 @@ indenfor skakbrættet og at man ikke kan rykke til det felt man allerede står p
 (Hint: benyt superklassens canMoveTo(x,y) til at sikre at feltet er indenfor brættet og at man ikke
 rykker til det felt man allerede står på. Og tilføj funktionalitet der håndterer hvordan den specifikke
 brik kan rykke.)
-*/
+ */
 public class Knight extends Chesspiece {
 
     public Knight(String color, int xPosition, int yPosition) {
         super(color, xPosition, yPosition);
     }
 
+    @Override
+    public boolean canMoveTo(int x, int y) {
+        return super.canMoveTo(x, y); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String possibleMoves() {
+        ArrayList<String> availableMovement = new ArrayList<>();
+        {
+            for (int y = 1; y <= 8; y++) {
+                for (int x = 1; x <= 8; x++) {
+                    if (canMoveTo(x, y)== true) {
+                        
+                        availableMovement.add(positionToField(x, y));
+                    }
+
+                }
+            }
+        }
+        return availableMovement.toString();
+    }
 }
