@@ -71,7 +71,7 @@ public class Chesspiece {
     }
 
     public boolean canMoveTo(int x, int y) {
-        return (x > 1 && x <= 8) && ((y > 1 && y <= 8)) && ((this.xPosition != x && this.yPosition != y));
+        return (x >= 1 && x <= 8) && ((y >= 1 && y <= 8)) && ((this.xPosition != x && this.yPosition != y));
     }
 
     public String positionToField(int x, int y) {//this method represent how coordinates of (x,y) on the chess board . 
