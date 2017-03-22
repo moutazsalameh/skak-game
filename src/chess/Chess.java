@@ -16,11 +16,11 @@ public class Chess {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Chesspiece sk = new Chesspiece("castel", "white", 1, 1);
+        Chesspiece sk = new Chesspiece("castel", "white", 10, 4);
 
 //        System.out.println("possibleMoves : \n" + sk.possibleMoves());
-
-     sk.show();
+//     sk.show();
+//        sk.move(7, 4);
     }
 
 }
