@@ -11,6 +11,11 @@ import java.util.ArrayList;
  *
  * @author MouNj
  */
+/**
+ *
+ * @author MouNj chesspice klass include name = "navn der gives til brikken " ,
+ * color ="farve til hvert felter ,brikken står på " and x,y=
+ */
 public class Chesspiece {
 
     private String name;
@@ -18,8 +23,48 @@ public class Chesspiece {
     private int xPosition;
     private int yPosition;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getxPosition() {
+        return xPosition;
+    }
+
+    public void setxPosition(int xPosition) {
+        this.xPosition = xPosition;
+    }
+
+    public int getyPosition() {
+        return yPosition;
+    }
+
+    public void setyPosition(int yPosition) {
+        this.yPosition = yPosition;
+    }
+//give each new objekt "as "
+
     public Chesspiece(String name, String color, int xPosition, int yPosition) {
         this.name = name;
+        this.color = color;
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
+    }
+
+    public Chesspiece(String color, int xPosition, int yPosition) {
+
         this.color = color;
         this.xPosition = xPosition;
         this.yPosition = yPosition;
@@ -29,7 +74,7 @@ public class Chesspiece {
         return (x > 1 && x <= 8) && ((y > 1 && y <= 8)) && ((this.xPosition != x && this.yPosition != y));
     }
 
-    public String positionToField(int x, int y) {
+    public String positionToField(int x, int y) {//this method represent how coordinates of (x,y) on the chess board . 
         String sympol;
 
         switch (x) {
@@ -68,17 +113,37 @@ public class Chesspiece {
     }
 // Lav en metode possibleMoves(), som returnerer navnene på alle de felter brikken kan rykke til.
 
-    public String possibleMoves() {
-        ArrayList<String> moves = new ArrayList<>();
+    public String possibleMoves() {//this method instalizer the board ->
+        ArrayList<String> availableMovement = new ArrayList<>();
         {
             for (int y = 1; y <= 8; y++) {
                 for (int x = 1; x <= 8; x++) {
 
-                    moves.add(positionToField(x, y));
+                    availableMovement.add(positionToField(x, y));
 
                 }
             }
         }
-        return moves.toString();
+        return availableMovement.toString();
     }
+//Lav en metode show(), der udskriver color, name og navnet på det felt brikken står på i første
+//og i næste linie udskriver ”Kan rykke til: ” efterfulgt af alle de felter brikken kan rykke til
+
+    public void show() {
+        System.out.println("color :" + color + " name :" + name + positionToField(xPosition, yPosition));
+        System.out.println("Kan rykke til: " + possibleMoves());
+    }
+
+    //Lav en metode move(int x, int y), der flytter brikken til (x,y) hvis det er et lovligt træk. (Altså hvis
+    //canMoveTo(int x, int y) = true). Udskriv color, name, felt, ”->”, nytFelt. Udskriv ”Ugyldigt træk!”
+    //efter trækket, hvis det ikke er lovligt. (F.eks.: Sort Løber c7 -> a5​)
+    public void move(int x, int y) {
+        if (canMoveTo(x, y) == true) {
+
+            System.out.println("color :" + color + " name :" + name + positionToField(xPosition, yPosition) + "-->" + positionToField(x, y));
+        } else {
+            System.out.println("Ugyldigt træk !");
+        }
+    }
+
 }
