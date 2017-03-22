@@ -22,8 +22,23 @@ brik kan rykke.)
  */
 public class Knight extends Chesspiece {
 
+    private int xx, yy;
+
     public Knight(String color, int xPosition, int yPosition) {
         super(color, xPosition, yPosition);
+        xx = xPosition;
+        yy = yPosition;
+    }
+
+    @Override
+    public int getxPosition() {
+
+        return super.getxPosition(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getyPosition() {
+        return super.getyPosition(); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -31,23 +46,16 @@ public class Knight extends Chesspiece {
         return super.canMoveTo(x, y); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public String possibleMoves() {
-        ArrayList<String> availableMovement = new ArrayList<>();
+    public boolean possibleMoves(int x, int y) {
+        boolean canMove = false;
+//        ArrayList<String> availableMovement = new ArrayList<>();
 
-        for (int y = 1; y <= 8; y++) {
-            for (int x = 1; x <= 8; x++) {
-                if ((canMoveTo(x, y) == true) && ((canMoveTo(x - 2, y + 1) == true) || (canMoveTo(x - 2, y - 1) == true) || (canMoveTo(x - 1, y + 2) == true)
-                        || (canMoveTo(x - 1, y - 2) == true)) || (canMoveTo(x + 1, y + 2) == true) || (canMoveTo(x + 1, y + 2) == true || (canMoveTo(x + 1, y - 2) == true))
-                        || (canMoveTo(x + 2, y + 1) == true) || (canMoveTo(x + 2, y - 1) == true)) {
+        if (canMoveTo(Math.abs(x - 2), Math.abs(y - 1)) == true || canMoveTo(Math.abs(x - 1), Math.abs(y - 2)) == true) {
+            canMove = true;
 
-                    availableMovement.add(positionToField(x, y));
-                }
-
-            }
         }
 
-        return availableMovement.toString();
+        return canMove;
     }
 
 }
