@@ -34,17 +34,20 @@ public class Knight extends Chesspiece {
     @Override
     public String possibleMoves() {
         ArrayList<String> availableMovement = new ArrayList<>();
-        {
-            for (int y = 1; y <= 8; y++) {
-                for (int x = 1; x <= 8; x++) {
-                    if (canMoveTo(x, y)== true) {
-                        
-                        availableMovement.add(positionToField(x, y));
-                    }
 
+        for (int y = 1; y <= 8; y++) {
+            for (int x = 1; x <= 8; x++) {
+                if ((canMoveTo(x, y) == true) && ((canMoveTo(x - 2, y + 1) == true) || (canMoveTo(x - 2, y - 1) == true) || (canMoveTo(x - 1, y + 2) == true)
+                        || (canMoveTo(x - 1, y - 2) == true)) || (canMoveTo(x + 1, y + 2) == true) || (canMoveTo(x + 1, y + 2) == true || (canMoveTo(x + 1, y - 2) == true))
+                        || (canMoveTo(x + 2, y + 1) == true) || (canMoveTo(x + 2, y - 1) == true)) {
+
+                    availableMovement.add(positionToField(x, y));
                 }
+
             }
         }
+
         return availableMovement.toString();
     }
+
 }
