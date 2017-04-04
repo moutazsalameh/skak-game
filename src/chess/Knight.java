@@ -46,11 +46,10 @@ public class Knight extends Chesspiece {
         return super.canMoveTo(x, y); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public boolean possibleMoves(int x, int y) {
+    public boolean knightPossibleMoves(int CurrentxPos, int curretyPos,int desiredxPos, int desiredyPos) {
         boolean canMove = false;
-//        ArrayList<String> availableMovement = new ArrayList<>();
 
-        if (canMoveTo(Math.abs(x - 2), Math.abs(y - 1)) == true || canMoveTo(Math.abs(x - 1), Math.abs(y - 2)) == true) {
+        if ((Math.abs(CurrentxPos - desiredxPos)==2) && (Math.abs(curretyPos - desiredyPos) == 1) || (Math.abs(CurrentxPos - desiredxPos) == 1) && (Math.abs(curretyPos - desiredyPos) == 2)) {
             canMove = true;
 
         }
@@ -58,4 +57,32 @@ public class Knight extends Chesspiece {
         return canMove;
     }
 
+    public String possibleMovesTwo(int x, int y) {
+        int[][] board = new int[8][8];
+        ArrayList<String> availableMovement = new ArrayList<>();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (knightPossibleMoves(x, y,i,j) == false) {
+
+                } else {
+                    availableMovement.add(positionToField(i , j ));
+                }
+            }
+        }
+        return availableMovement.toString();
+    }
+
+    @Override
+    public void move(int x, int y) {
+       if (knightPossibleMoves(getxPosition(), getyPosition(), x, y)==true){
+           setxPosition(x);
+           setyPosition(y);
+           
+           System.out.println("moved to: "+positionToField(getxPosition(), getyPosition()));
+       }else{
+        System.out.println("not allowed movement");}
+       
+    
+    }
+    
 }
